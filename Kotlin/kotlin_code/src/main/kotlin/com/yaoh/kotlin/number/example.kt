@@ -1,4 +1,4 @@
-package com.yaoh.kotlin
+package com.yaoh.kotlin.number
 
 /**
  * @author yaoh
@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     var b = 255
 
     println("a=" + String.format("%02x", a) + " b = " + b)
-    println("com.yaoh.kotlin.sum2: " + sum2("s", 1))
+    println("com.yaoh.kotlin.number.sum2: " + sum2("s", 1))
 
     testStep()
 
@@ -37,7 +37,7 @@ fun testFlod() {
 }
 
 fun testStep() {
-    println("com.yaoh.kotlin.testStep--->")
+    println("com.yaoh.kotlin.number.testStep--->")
 //    for (i in 1..100 step 20) {
 //        println("$i")
 //    }
