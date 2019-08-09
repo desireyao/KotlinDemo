@@ -1,9 +1,9 @@
-package com.yaoh.kotlin.gouzaohanshu
+package com.yaoh.kotlin.class_objects.class_extend
 
 /**
  * @author yaoh
  * @date Create in 2019-08-05 17:41
- * @description 构造函数
+ * @description 类与继承
  */
 
 class Person(name: String) {
@@ -30,10 +30,20 @@ class Person2() {
     }
 }
 
-class Customer(name: String) {
+class Customer(var name: String) {
+
+    var age: Int = 18
+
+
     init {
-        print("customer initialized with value ${name}")
+        println("customer initialized with value ${name}")
     }
+
+    override fun toString(): String {
+        return "Customer(name=${name},age=${age})"
+    }
+
+
 }
 
 /**
@@ -59,8 +69,19 @@ class Derived(
 }
 
 
+fun testNull() {
+    var customer: Customer? = null
+//    var customer = Customer("yaoh")
+    customer?.age = 27
+    println("customer: " + customer.toString())
+}
+
 fun main(args: Array<String>) {
 //    val customer = Customer("yaoh")
-    val person = Person("yaoh", 12)
+//    val person = Person("yaoh", 12)
 //    val person2 = Person2("yaoh", 12)
+
+    testNull()
+
+
 }
