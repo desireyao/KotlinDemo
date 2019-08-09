@@ -35,10 +35,11 @@ class MainActivity : RxAppCompatActivity(), View.OnClickListener {
     }
 
     fun doGet() {
-        var map: MutableMap<String,String>
-        map.put("name","haha")
+        var map: HashMap<String, String> = hashMapOf()
+        map.put("header_key1", "header_value1")
+        map.put("header_key2", "header_value2")
 
-        ApiClient.get().service.listRepos("dd")
+        ApiClient.get().service.listRepos(map, "desireyao")
             .compose(NetworkScheduler.compose())
             .bindUntilEvent(this, ActivityEvent.DESTROY)
             .subscribe(object : ApiResponse<List<Repo>>(this) {
@@ -51,6 +52,11 @@ class MainActivity : RxAppCompatActivity(), View.OnClickListener {
                 }
 
             })
+    }
+
+    fun testRxJava(){
+
+
     }
 
 

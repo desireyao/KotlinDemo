@@ -1,6 +1,7 @@
 package com.beacool.appnetwork.network
 
 import com.yaoh.kotlin_network.BuildConfig
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -46,11 +47,20 @@ class ApiClient {
                 HttpLoggingInterceptor.Level.HEADERS
         )
 
-        val okHttpClient = OkHttpClient.Builder()
+//        val okHttpClient = OkHttpClient.Builder()
+//            .connectTimeout(15, TimeUnit.SECONDS)
+//            .writeTimeout(15, TimeUnit.SECONDS)
+//            .readTimeout(15, TimeUnit.SECONDS)
+//            .addInterceptor(logger_interceptor)
+//            .build()
+
+        // 可以动态改变 url
+        val okHttpClient = RetrofitUrlManager.getInstance()
+            .with(OkHttpClient.Builder())
             .connectTimeout(15, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
-//            .addInterceptor(logger_interceptor)
+            .addInterceptor(logger_interceptor)
             .build()
 
         val retrofit = Retrofit.Builder()
@@ -61,7 +71,6 @@ class ApiClient {
             .build()
 
         service = retrofit.create(ApiService::class.java)
-
     }
 
 
